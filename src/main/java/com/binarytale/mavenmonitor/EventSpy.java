@@ -51,7 +51,7 @@ public class EventSpy extends AbstractEventSpy {
 
     private String reportApiUrl = System.getProperty("maven-monitor.reportApiUrl", "http://localhost:3000/");
 
-    private boolean anonymousMetrics = Boolean.getBoolean("maven-monitor.anonymous");
+    private boolean anonymousMetrics = Boolean.valueOf(System.getProperty("maven-monitor.anonymous", "true"));
 
     private boolean skipReport = false;
 
@@ -239,13 +239,14 @@ public class EventSpy extends AbstractEventSpy {
 
     private void post(ProjectReport report) {
         try {
+            final String requestURI = constructReportURL(reportApiUrl);
             HttpClient client = HttpClient.newBuilder().build();
             String body = JSON.toJSONString(report, true);
             if (debug) {
-                logger.info("Maven-monitor-extension will send the following data to report server({}): {}", reportApiUrl, body);
+                logger.info("Maven-monitor-extension will send the following data to report server({}): {}", requestURI, body);
             }
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(constructReportURL(reportApiUrl)))
+                    .uri(URI.create(requestURI))
                     .header("Accept", "application/json")
                     .header("Content-Type", "application/json")
                     //we dont want to slow down the build
@@ -257,7 +258,7 @@ public class EventSpy extends AbstractEventSpy {
             if (response.statusCode() == 201) {
                 logger.info("Execution report submitted. You can access it via: {}", response.headers().firstValue("Location").get());
             } else {
-                logger.warn("Failed to send execution report to API server({}) response code: {}", reportApiUrl, response.statusCode());
+                logger.warn("Failed to send execution report to API server({}) response code: {}", requestURI, response.statusCode());
                 if (debug) {
                     logger.error("maven-extension-monitor failed to send report : {}", response.body());
                 }
