@@ -3,7 +3,7 @@
 Maven extension (based on EventSpy API) that records the execution time of maven builds with optional reporting of these metrics to central collector.
 
 [![License](https://img.shields.io/github/license/yntelectual/maven-monitor-extension?style=for-the-badge&logo=MIT)](https://opensource.org/licenses/MIT)
-[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/yntelectual/maven-monitor-extension/build/master?logo=github&style=for-the-badge)](https://github.com/yntelectual/maven-monitor-extension/actions?query=workflow%3Aci)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/yntelectual/maven-monitor-extension/build/main?logo=github&style=for-the-badge)](https://github.com/yntelectual/maven-monitor-extension/actions?query=workflow%3Aci)
 [![Maven Central](https://img.shields.io/maven-central/v/com.binarytale/maven-monitor-extension?logo=java&style=for-the-badge)](https://maven-badges.herokuapp.com/maven-central/com.binarytale/maven-monitor-extension)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/yntelectual/maven-monitor-extension?logo=github&style=for-the-badge)](https://github.com/lorislab/yntelectual/maven-monitor-extension/releases/latest)
 
@@ -17,7 +17,7 @@ Create a file `~/.mvn/extensions.xml` with the following contents:
   <extension>
     <groupId>com.binarytale</groupId>
     <artifactId>maven-monitor-extension</artifactId>
-    <version>1.0.0</version>
+    <version>1.2.0</version>
   </extension>
 </extensions>
 ```
@@ -30,6 +30,7 @@ You can pass this configuration properties as java System properties to the mave
 * `maven-monitor.debug` - when true, additional info will be printed to console, including report payload
 * `maven-monitor.reportApiEnabled` - when true, the report will be sent to remote API, default `false`
 * `maven-monitor.reportApiUrl` - if `reportApiEnabled`: report collector API URL. The extension will send the report via HTTP POST to `${maven-monitor.reportApiUrl}/api/projectReports/`. Default  `http://localhost:3000`
+* `maven-monitor.reportApiAuth` - value of `Authorization` header that should be sent with the HTTP request to report API. Default  `null`
 * `maven-monitor.anonymous` - when true, the current username(system property `user.name`) will be included in report `client` field. When false, the extension will sent a UUID instead and stores it in a file `~/.mvn-monitor-id`. That way you can still find all your reports (using `where client=you_uuid` filter) even if they are anonymous.
 * `maven-monitor.ignoreGoals` - comma separate list of maven goals, which when active, will disable the extension
 * `maven-monitor.disabled` - when true, the extension will not be active (e.g. when you want to disable the extension per project)
