@@ -3,7 +3,7 @@
 Maven extension (based on EventSpy API) that records the execution time of maven builds with optional reporting of these metrics to central collector.
 
 [![License](https://img.shields.io/github/license/yntelectual/maven-monitor-extension?style=for-the-badge&logo=MIT)](https://opensource.org/licenses/MIT)
-[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/yntelectual/maven-monitor-extension/build/main?logo=github&style=for-the-badge)](https://github.com/yntelectual/maven-monitor-extension/actions?query=workflow%3Aci)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/yntelectual/maven-monitor-extension/Maven%20Package/main?logo=github&style=for-the-badge)](https://github.com/yntelectual/maven-monitor-extension/actions?query=workflow%3Aci)
 [![Maven Central](https://img.shields.io/maven-central/v/com.binarytale/maven-monitor-extension?logo=java&style=for-the-badge)](https://maven-badges.herokuapp.com/maven-central/com.binarytale/maven-monitor-extension)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/yntelectual/maven-monitor-extension?logo=github&style=for-the-badge)](https://github.com/lorislab/yntelectual/maven-monitor-extension/releases/latest)
 
