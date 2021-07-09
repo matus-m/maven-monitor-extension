@@ -255,6 +255,9 @@ public class EventSpy extends AbstractEventSpy {
                     .POST(HttpRequest.BodyPublishers.ofByteArray(body.getBytes(StandardCharsets.UTF_8)));
 
             if (reportApiAuth != null) {
+                if (reportApiAuth.contains("##")) {
+                    reportApiAuth = reportApiAuth.replace("##", " ");
+                }
                 requestBuilder.header("Authorization", reportApiAuth);
             }
 
