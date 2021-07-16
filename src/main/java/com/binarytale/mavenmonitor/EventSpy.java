@@ -61,6 +61,8 @@ public class EventSpy extends AbstractEventSpy {
 
     private boolean silent = Boolean.getBoolean("maven-monitor.silent");
 
+    private int reportApiTimeout = Integer.getInteger("x", 1);
+
     private String reportApiAuth = System.getProperty("maven-monitor.reportApiAuth");
 
     @Override
@@ -251,7 +253,7 @@ public class EventSpy extends AbstractEventSpy {
                     .header("Accept", "application/json")
                     .header("Content-Type", "application/json")
                     //we dont want to slow down the build
-                    .timeout(Duration.of(1, ChronoUnit.SECONDS))
+                    .timeout(Duration.of(reportApiTimeout, ChronoUnit.SECONDS))
                     .POST(HttpRequest.BodyPublishers.ofByteArray(body.getBytes(StandardCharsets.UTF_8)));
 
             if (reportApiAuth != null) {

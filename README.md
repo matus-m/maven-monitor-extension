@@ -17,7 +17,7 @@ Create a file `~/.mvn/extensions.xml` with the following contents:
   <extension>
     <groupId>com.binarytale</groupId>
     <artifactId>maven-monitor-extension</artifactId>
-    <version>1.3.0</version>
+    <version>1.4.0</version>
   </extension>
 </extensions>
 ```
@@ -31,6 +31,7 @@ You can pass this configuration properties as java System properties to the mave
 * `maven-monitor.reportApiEnabled` - when true, the report will be sent to remote API, default `false`
 * `maven-monitor.reportApiUrl` - if `reportApiEnabled`: report collector API URL. The extension will send the report via HTTP POST to `${maven-monitor.reportApiUrl}/api/projectReports/`. Default  `http://localhost:3000`
 * `maven-monitor.reportApiAuth` - value of `Authorization` header that should be sent with the HTTP request to report API(due to issue with passing spaces in JVM props, you can replace them with `##`). Default  `null`
+* `maven-monitor.reportApiTimeout` - http request timeout for the report API, in seconds Default  `1`
 * `maven-monitor.anonymous` - when true, the current username(system property `user.name`) will be included in report `client` field. When false, the extension will sent a UUID instead and stores it in a file `~/.mvn-monitor-id`. That way you can still find all your reports (using `where client=you_uuid` filter) even if they are anonymous.
 * `maven-monitor.ignoreGoals` - comma separate list of maven goals, which when active, will disable the extension
 * `maven-monitor.disabled` - when true, the extension will not be active (e.g. when you want to disable the extension per project)
