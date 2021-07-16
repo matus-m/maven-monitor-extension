@@ -6,7 +6,7 @@
 
     <groupId>com.binarytale</groupId>
     <artifactId>maven-monitor-extension</artifactId>
-    <version>1.4.0-SNAPSHOT</version>
+    <version>1.5.0-SNAPSHOT</version>
     <name>maven-monitor-extension</name>
     <description>Maven Monitor extension</description>
     <url>https://github.com/yntelectual/maven-metrics-monitor</url>
