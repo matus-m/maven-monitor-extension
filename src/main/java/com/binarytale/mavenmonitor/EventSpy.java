@@ -61,7 +61,7 @@ public class EventSpy extends AbstractEventSpy {
 
     private boolean silent = Boolean.getBoolean("maven-monitor.silent");
 
-    private int reportApiTimeout = Integer.getInteger("x", 1);
+    private int reportApiTimeout = Integer.getInteger("maven-monitor.reportApiTimeout", 1);
 
     private String reportApiAuth = System.getProperty("maven-monitor.reportApiAuth");
 
